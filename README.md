@@ -11,7 +11,8 @@ Marketing site for **My Ummah**, a complete mosque management platform by Albain
 
 ## Live site (GitHub Pages)
 
-After deploy: **https://mohamed-rilwan.github.io/myummah-landingpage/**
+After deploy: **https://myummah.co.uk/**  
+(GitHub project URL also works if configured: `https://mohamed-rilwan.github.io/myummah-landingpage/` — use custom domain as primary; Vite `base` is `/` for the apex domain.)
 
 Pushing to `main` builds and publishes automatically via GitHub Actions.
 

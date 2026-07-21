@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { brand, navItems } from '../data/content'
+import { assetUrl } from '../lib/assets'
 
 type NavProps = {
   activeId: string
@@ -32,7 +33,7 @@ export function Nav({ activeId, scrolled }: NavProps) {
           go('home')
         }}
       >
-        <img src="/logo.png" alt="" />
+        <img src={assetUrl('logo.png')} alt="" />
         <span>
           My <em>Ummah</em>
         </span>

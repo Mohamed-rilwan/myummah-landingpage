@@ -2,6 +2,7 @@ import { Suspense, useMemo, useRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Stars, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
+import { assetUrl } from '../lib/assets'
 
 type Scene3DProps = {
   scrollProgress: number
@@ -10,7 +11,7 @@ type Scene3DProps = {
 function MosqueBackdrop({ scrollProgress }: { scrollProgress: number }) {
   const mesh = useRef<THREE.Mesh>(null)
   const { camera, size } = useThree()
-  const texture = useTexture('/sheikh-zayed.jpg')
+  const texture = useTexture(assetUrl('sheikh-zayed.jpg'))
 
   useMemo(() => {
     texture.colorSpace = THREE.SRGBColorSpace

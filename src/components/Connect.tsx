@@ -154,7 +154,7 @@ export function Connect() {
               <div>
                 Share with mosques:{' '}
                 <a href={`${import.meta.env.BASE_URL}mosque-invite.html`} target="_blank" rel="noopener noreferrer">
-                  Invite poster + QR
+                  Invite poster
                 </a>
               </div>
             </div>

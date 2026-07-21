@@ -37,7 +37,7 @@ export function Connect() {
         form.message,
       ].join('\n'),
     )
-    window.location.href = `mailto:hello@myummah.app?subject=${subject}&body=${body}`
+    window.location.href = `mailto:managoor@gmail.com?subject=${subject}&body=${body}`
     setSent(true)
   }
 
@@ -74,7 +74,7 @@ export function Connect() {
             {sent && (
               <div className="form-success" role="status">
                 Your mail client should open with the details filled in. If it does not, email us at
-                hello@myummah.app.
+                managoor@gmail.com.
               </div>
             )}
             <div className="form-grid two">

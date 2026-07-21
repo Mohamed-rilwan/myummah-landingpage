@@ -151,6 +151,12 @@ export function Connect() {
               <div>
                 Prefer a quick note? Write us and we will follow up within a few days.
               </div>
+              <div>
+                Share with mosques:{' '}
+                <a href={`${import.meta.env.BASE_URL}mosque-invite.html`} target="_blank" rel="noopener noreferrer">
+                  Invite poster + QR
+                </a>
+              </div>
             </div>
           </div>
 

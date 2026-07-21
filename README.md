@@ -9,6 +9,20 @@ Marketing site for **My Ummah**, a complete mosque management platform by Albain
 - Lenis — smooth scrolling
 - GSAP ScrollTrigger — section reveals
 
+## Mosque invite poster (QR)
+
+Shareable poster for WhatsApp / messaging:
+
+- Local: `public/mosque-invite.html` (or `http://localhost:5173/mosque-invite.html`)
+- Live: `https://myummah.co.uk/mosque-invite.html`
+- QR points to: `https://myummah.co.uk/#connect`
+
+Regenerate the QR anytime:
+
+```bash
+npm run generate:qr
+```
+
 ## Live site (GitHub Pages)
 
 After deploy: **https://myummah.co.uk/**  

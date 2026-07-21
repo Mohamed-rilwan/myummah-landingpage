@@ -168,5 +168,6 @@ export const team = [
     role: 'Application Consultant',
     initials: 'SF',
     linkedin: 'https://www.linkedin.com/in/salma-firdouse-9aa17176/',
+    photo: 'team/salma.jpg',
   },
 ]

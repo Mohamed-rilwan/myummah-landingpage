@@ -21,7 +21,6 @@ export function Hero() {
         </div>
       </div>
       <div className="scroll-hint" aria-hidden>
-        <span>Scroll</span>
         <div className="line" />
       </div>
     </section>

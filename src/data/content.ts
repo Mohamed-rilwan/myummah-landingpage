@@ -10,7 +10,7 @@ export const brand = {
 
 export const navItems = [
   { id: 'home', label: 'Home' },
-  { id: 'challenge', label: 'Why' },
+  { id: 'challenge', label: 'Challenge' },
   { id: 'platform', label: 'Platform' },
   { id: 'revenue', label: 'Revenue' },
   { id: 'team', label: 'Team' },

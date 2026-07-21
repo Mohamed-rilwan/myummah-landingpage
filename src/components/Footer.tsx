@@ -13,7 +13,10 @@ export function Footer() {
           <p className="footer-tag">{brand.tagline}</p>
         </div>
         <p className="footer-copy">
-          © {year} {brand.company}
+          © {year}{' '}
+          <a href={brand.companyUrl} target="_blank" rel="noopener noreferrer">
+            {brand.company}
+          </a>
           <br />
           Linking community with the mosque
         </p>

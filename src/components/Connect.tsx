@@ -30,14 +30,52 @@ const publicKey = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '').trim()
 
 const emailJsConfigured = Boolean(serviceId && templateId && publicKey)
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+/** Digits / spaces / + ( ) - ; at least 8 digits overall */
+const PHONE_RE = /^\+?[\d\s().-]{8,20}$/
+
+function isValidEmail(value: string) {
+  return EMAIL_RE.test(value.trim())
+}
+
+function isValidPhone(value: string) {
+  const trimmed = value.trim()
+  if (!PHONE_RE.test(trimmed)) return false
+  const digits = trimmed.replace(/\D/g, '')
+  return digits.length >= 8 && digits.length <= 15
+}
+
+type FieldErrors = Partial<Record<'email' | 'phone', string>>
+
 export function Connect() {
   const [form, setForm] = useState<FormState>(initial)
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+
+  const validate = (): FieldErrors => {
+    const next: FieldErrors = {}
+    if (!isValidEmail(form.email)) {
+      next.email = 'Enter a valid email address (e.g. name@example.com).'
+    }
+    if (!isValidPhone(form.phone)) {
+      next.phone = 'Enter a valid phone number with country code (e.g. +1 555 000 0000).'
+    }
+    return next
+  }
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setErrorMsg('')
+    setStatus('idle')
+
+    const errors = validate()
+    setFieldErrors(errors)
+    if (Object.keys(errors).length > 0) {
+      setStatus('error')
+      setErrorMsg('Please fix the highlighted fields and try again.')
+      return
+    }
 
     if (!emailJsConfigured) {
       setStatus('error')
@@ -53,22 +91,23 @@ export function Connect() {
 
     try {
       await emailjs.send(
-        serviceId!,
-        templateId!,
+        serviceId,
+        templateId,
         {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone.trim() || 'Not provided',
-          mosque: form.mosque,
-          city: form.city,
+          from_name: form.name.trim(),
+          from_email: form.email.trim(),
+          phone: form.phone.trim(),
+          mosque: form.mosque.trim(),
+          city: form.city.trim(),
           role: form.role,
-          message: form.message || '(No additional message)',
+          message: form.message.trim() || '(No additional message)',
           to_email: CONTACT_EMAIL,
-          reply_to: form.email,
+          reply_to: form.email.trim(),
         },
-        { publicKey: publicKey! },
+        { publicKey },
       )
       setStatus('sent')
+      setFieldErrors({})
       setForm(initial)
     } catch (err) {
       console.error('EmailJS error:', err)
@@ -94,7 +133,15 @@ export function Connect() {
             </p>
             <div className="connect-meta">
               <div>
-                <strong>{brand.company}</strong>
+                <strong>
+                  <a
+                    href={brand.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {brand.company}
+                  </a>
+                </strong>
               </div>
               <div>{brand.owner}</div>
               <div>
@@ -130,32 +177,59 @@ export function Connect() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
               </div>
-              <div className="field">
+              <div className={`field ${fieldErrors.email ? 'has-error' : ''}`}>
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
+                  inputMode="email"
+                  placeholder="name@example.com"
+                  aria-invalid={Boolean(fieldErrors.email)}
+                  aria-describedby={fieldErrors.email ? 'email-error' : undefined}
                   value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, email: e.target.value })
+                    if (fieldErrors.email) {
+                      setFieldErrors((prev) => ({ ...prev, email: undefined }))
+                    }
+                  }}
                 />
+                {fieldErrors.email && (
+                  <p id="email-error" className="field-error">
+                    {fieldErrors.email}
+                  </p>
+                )}
               </div>
             </div>
             <div className="form-grid two" style={{ marginTop: '0.9rem' }}>
-              <div className="field">
-                <label htmlFor="phone">
-                  Phone <span className="field-optional">(optional)</span>
-                </label>
+              <div className={`field ${fieldErrors.phone ? 'has-error' : ''}`}>
+                <label htmlFor="phone">Phone</label>
                 <input
                   id="phone"
                   name="phone"
                   type="tel"
+                  required
                   autoComplete="tel"
+                  inputMode="tel"
                   placeholder="+1 555 000 0000"
+                  aria-invalid={Boolean(fieldErrors.phone)}
+                  aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
                   value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, phone: e.target.value })
+                    if (fieldErrors.phone) {
+                      setFieldErrors((prev) => ({ ...prev, phone: undefined }))
+                    }
+                  }}
                 />
+                {fieldErrors.phone && (
+                  <p id="phone-error" className="field-error">
+                    {fieldErrors.phone}
+                  </p>
+                )}
               </div>
               <div className="field">
                 <label htmlFor="role">Your role</label>

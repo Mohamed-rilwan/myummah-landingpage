@@ -4,6 +4,7 @@ export const brand = {
   tagline: 'Together in Faith · United in Good',
   subtitle: 'A complete mosque management solution linking community with the mosque.',
   company: 'Albain Group Inc',
+  companyUrl: 'https://albaingroup.com/home.html',
   owner: 'Nagoor Monnapillai Ahamed',
 }
 
@@ -127,9 +128,39 @@ export const adSharing = [
 ]
 
 export const team = [
-  { name: 'Nagoor Monnapillai', role: 'Product Owner', initials: 'NM' },
-  { name: 'Samee Sultan', role: 'Fullstack Developer', initials: 'SS' },
-  { name: 'Mohamed Rilwan', role: 'Senior Software Developer', initials: 'MR' },
-  { name: 'Faraj Ahamed', role: 'UI/UX Lead', initials: 'FA' },
-  { name: 'Ahamed Rajaa', role: 'Business Analyst / AI Consultant', initials: 'AR' },
+  {
+    name: 'Nagoor Monnapillai',
+    role: 'Product Owner',
+    initials: 'NM',
+    linkedin: 'https://www.linkedin.com/in/nagoor-monnapillai-c-eng-fsars-2a35651/',
+    photo: 'team/nagoor.jpg',
+  },
+  {
+    name: 'Samee Sultan',
+    role: 'Fullstack Developer',
+    initials: 'SS',
+    linkedin: 'https://www.linkedin.com/in/mohamed-samee-sultan-110b43243/',
+    photo: 'team/samee.jpg',
+  },
+  {
+    name: 'Mohamed Rilwan',
+    role: 'Senior Software Developer',
+    initials: 'MR',
+    linkedin: 'https://www.linkedin.com/in/mohamed-s-rilwan/',
+    photo: 'team/rilwan.jpg',
+  },
+  {
+    name: 'Faraj Ahamed',
+    role: 'UI/UX Lead',
+    initials: 'FA',
+    linkedin: 'https://www.linkedin.com/in/faraj-monnapillai/',
+    photo: 'team/faraj.jpg',
+  },
+  {
+    name: 'Ahamed Rajaa',
+    role: 'Business Analyst / AI Consultant',
+    initials: 'AR',
+    linkedin: 'https://www.linkedin.com/in/rajaamonnapillai/',
+    photo: 'team/rajaa.jpg',
+  },
 ]

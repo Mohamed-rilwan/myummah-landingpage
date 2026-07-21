@@ -21,7 +21,7 @@ Add these repository secrets (Settings → Secrets and variables → Actions) so
 - `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_EMAILJS_PUBLIC_KEY`
 
-Also enable Pages: **Settings → Pages → Source: GitHub Actions**.
+Enable Pages: **Settings → Pages → Source: Deploy from a branch → Branch: `gh-pages` / `/ (root)`**.
 
 ## Run locally
 

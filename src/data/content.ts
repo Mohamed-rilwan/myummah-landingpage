@@ -163,4 +163,10 @@ export const team = [
     linkedin: 'https://www.linkedin.com/in/rajaamonnapillai/',
     photo: 'team/rajaa.jpg',
   },
+  {
+    name: 'Salma Firdouse',
+    role: 'Application Consultant',
+    initials: 'SF',
+    linkedin: 'https://www.linkedin.com/in/salma-firdouse-9aa17176/',
+  },
 ]

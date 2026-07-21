@@ -17,11 +17,11 @@ function MemberPhoto({
 }: {
   name: string
   initials: string
-  photo: string
+  photo?: string
 }) {
   const [failed, setFailed] = useState(false)
 
-  if (failed) {
+  if (!photo || failed) {
     return (
       <div className="team-avatar" aria-hidden>
         {initials}

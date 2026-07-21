@@ -24,9 +24,9 @@ const initial: FormState = {
 
 const CONTACT_EMAIL = 'managoor@gmail.com'
 
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined
+const serviceId = String(import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '').trim()
+const templateId = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? '').trim()
+const publicKey = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '').trim()
 
 const emailJsConfigured = Boolean(serviceId && templateId && publicKey)
 
@@ -42,7 +42,7 @@ export function Connect() {
     if (!emailJsConfigured) {
       setStatus('error')
       setErrorMsg(
-        'EmailJS is not configured yet. Add your keys to .env, or email us directly at ' +
+        'Email form is not configured on this deploy. Email us directly at ' +
           CONTACT_EMAIL +
           '.',
       )

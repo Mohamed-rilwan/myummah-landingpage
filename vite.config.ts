@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Relative base so assets resolve on GitHub project Pages and locally.
-export default defineConfig({
+// Absolute project base so public assets never resolve against /assets/*.js
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: './',
-})
+  base: command === 'build' ? '/myummah-landingpage/' : '/',
+}))

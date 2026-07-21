@@ -46,7 +46,7 @@ export const challenges = [
     points: [
       'Few mosques can afford their own website or app',
       'CRM tools are rare and often used only for donations',
-      'High development and maintenance costs — unaffordable for 99% of mosques',
+      'High development and maintenance costs, unaffordable for 99% of mosques',
       'One-way communication; individuals need a separate app for every mosque',
     ],
   },
@@ -62,7 +62,7 @@ export const objectives = [
 export const platformPillars = [
   {
     title: 'Personal users',
-    audience: 'General users — mobile app',
+    audience: 'General users · mobile app',
     items: [
       'Location & mosque-based prayer times',
       'Prayer notifications',
@@ -75,19 +75,19 @@ export const platformPillars = [
   },
   {
     title: 'Mosque subscribers',
-    audience: 'Community members — mobile app',
+    audience: 'Community members · mobile app',
     items: [
       'Azan / prayer / Ramadan notifications',
-      'Ask Imam — religious Q&A chat',
+      'Ask Imam: religious Q&A chat',
       'Social media links (FB / YouTube / Insta)',
       'Sermon livestream links',
-      'Ask Management — subscriber chat',
+      'Ask Management: subscriber chat',
       'Event discovery & ticketing',
     ],
   },
   {
     title: 'Mosque management',
-    audience: 'Admins — mobile app + web portal',
+    audience: 'Admins · mobile app + web portal',
     items: [
       'Finance: payments, receipts, accounting, approvals',
       'Member & family database',
@@ -100,7 +100,7 @@ export const platformPillars = [
 ]
 
 export const revenueFree = [
-  'Prayer time — location & mosque',
+  'Prayer time: location & mosque',
   'Prayer notification selection',
   'Qibla compass & nearest mosque map',
   'Qur’an + multi-language translation',

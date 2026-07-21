@@ -49,7 +49,7 @@ export function Team() {
         <p className="section-kicker reveal">Development team</p>
         <h2 className="section-title">Balanced team with experience and youth</h2>
         <p className="section-lead reveal">
-          Product, engineering, design, and strategy — building My Ummah for mosques and the
+          Product, engineering, design, and strategy: building My Ummah for mosques and the
           communities they serve.
         </p>
 

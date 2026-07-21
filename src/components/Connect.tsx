@@ -128,7 +128,7 @@ export function Connect() {
           <div className="connect-copy reveal">
             <p>
               Start with a simple registration. We will help you onboard your mosque, connect
-              members, and bring management into the digital age — together in faith, united in
+              members, and bring management into the digital age: together in faith, united in
               good.
             </p>
             <div className="connect-meta">
@@ -158,7 +158,7 @@ export function Connect() {
             <h3>Mosque registration interest</h3>
             {status === 'sent' && (
               <div className="form-success" role="status">
-                JazakAllah khair — your message was sent. We will get back to you soon.
+                JazakAllah khair. Your message was sent. We will get back to you soon.
               </div>
             )}
             {status === 'error' && (

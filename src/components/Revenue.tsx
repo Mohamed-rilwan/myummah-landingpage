@@ -5,10 +5,10 @@ export function Revenue() {
     <section className="section" id="revenue">
       <div className="section-inner">
         <p className="section-kicker reveal">Revenue model</p>
-        <h2 className="section-title">Free for all users — subscription for mosques</h2>
+        <h2 className="section-title">Free for all users, subscription for mosques</h2>
         <p className="section-lead reveal">
           Personal worship tools stay free. Mosques unlock CRM, finance, and event modules through
-          subscription — with optional ad revenue sharing that can reduce fees.
+          subscription, with optional ad revenue sharing that can reduce fees.
         </p>
 
         <div className="tier-wrap">
@@ -22,7 +22,7 @@ export function Revenue() {
               </ul>
             </div>
             <div className="tier-block paid reveal">
-              <h3>Mosque CRM — paid</h3>
+              <h3>Mosque CRM (paid)</h3>
               <ul>
                 {revenuePaid.map((item) => (
                   <li key={item}>{item}</li>
@@ -35,7 +35,7 @@ export function Revenue() {
             <h3>In-app advertisement sharing</h3>
             <p>
               Model B lets mosques accept in-app ads. Ad revenue can reduce subscription to a
-              minimum — and may eventually cover it entirely while creating additional income for
+              minimum, and may eventually cover it entirely while creating additional income for
               the mosque.
             </p>
             <div className="share-rows">
@@ -47,7 +47,7 @@ export function Revenue() {
               ))}
             </div>
             <p className="revenue-note">
-              Users remain free. Mosques subscribe. Ads are optional — and designed to serve the
+              Users remain free. Mosques subscribe. Ads are optional, and designed to serve the
               community, not distract from worship.
             </p>
           </div>

@@ -8,7 +8,7 @@ export function Platform() {
         <h2 className="section-title">One platform, three tailored experiences</h2>
         <p className="section-lead reveal">
           An integrated mobile and web platform for religious interaction, financial governance, and
-          social activity management — with multi-tenant data segregation for every mosque.
+          social activity management, with multi-tenant data segregation for every mosque.
         </p>
 
         <div className="feature-columns">

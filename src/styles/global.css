@@ -786,6 +786,13 @@ img {
   margin-bottom: 0.35rem;
 }
 
+.field-optional {
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(245, 243, 238, 0.45);
+  font-size: 0.85em;
+}
+
 .field input,
 .field textarea,
 .field select {
@@ -820,6 +827,20 @@ img {
   color: #7dd3a8;
   font-size: 0.95rem;
   margin-bottom: 1rem;
+}
+
+.form-error {
+  padding: 1rem;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  color: #fca5a5;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .site-footer {

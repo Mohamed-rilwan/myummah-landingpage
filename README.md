@@ -9,7 +9,21 @@ Marketing site for **My Ummah**, a complete mosque management platform by Albain
 - Lenis — smooth scrolling
 - GSAP ScrollTrigger — section reveals
 
-## Run
+## Live site (GitHub Pages)
+
+After deploy: **https://mohamed-rilwan.github.io/myummah-landingpage/**
+
+Pushing to `main` builds and publishes automatically via GitHub Actions.
+
+Add these repository secrets (Settings → Secrets and variables → Actions) so the contact form works in production:
+
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
+
+Also enable Pages: **Settings → Pages → Source: GitHub Actions**.
+
+## Run locally
 
 ```bash
 npm install
@@ -37,3 +51,38 @@ npm run preview
 ## Brand
 
 Navy / gold palette and Cinzel + Cormorant Garamond typography aligned with the My Ummah mobile splash experience.
+
+## EmailJS setup (registration form)
+
+1. Create a free account at [emailjs.com](https://www.emailjs.com/).
+2. **Email Services** → Add **Gmail** → connect `managoor@gmail.com`.
+3. **Email Templates** → Create a template with these variables:
+
+```
+Subject: My Ummah — Mosque registration: {{mosque}}
+
+From: {{from_name}} <{{from_email}}>
+Phone: {{phone}}
+Mosque: {{mosque}}
+City: {{city}}
+Role: {{role}}
+
+Message:
+{{message}}
+```
+
+   Set **To Email** to `managoor@gmail.com` (or `{{to_email}}`).  
+   Set **Reply To** to `{{reply_to}}` or `{{from_email}}`.
+
+4. Copy **Service ID**, **Template ID**, and **Public Key** (Account → API Keys).
+5. Copy `.env.example` to `.env` and paste the values:
+
+```env
+VITE_EMAILJS_SERVICE_ID=service_xxxxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxxxx
+VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxx
+```
+
+6. Restart the dev server (`npm run dev`).
+
+Free plan: ~200 emails/month.

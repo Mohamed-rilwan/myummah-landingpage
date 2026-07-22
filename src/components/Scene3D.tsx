@@ -154,8 +154,8 @@ function CameraRig({ scrollProgress }: { scrollProgress: number }) {
 function SceneContent({ scrollProgress }: { scrollProgress: number }) {
   return (
     <>
-      <color attach="background" args={['#071b3a']} />
-      <fog attach="fog" args={['#071b3a', 6, 18]} />
+      <color attach="background" args={['#f7f6f2']} />
+      <fog attach="fog" args={['#f7f6f2', 8, 22]} />
       <ambientLight intensity={0.55} />
       <directionalLight position={[4, 6, 5]} intensity={1.15} color="#fff4d6" />
       <directionalLight position={[-5, 2, 2]} intensity={0.35} color="#4a90d9" />

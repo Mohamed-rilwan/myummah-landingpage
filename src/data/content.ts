@@ -12,7 +12,7 @@ export const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'challenge', label: 'Challenge' },
   { id: 'platform', label: 'Platform' },
-  { id: 'revenue', label: 'Revenue' },
+  { id: 'revenue', label: 'Subscription' },
   { id: 'team', label: 'Team' },
   { id: 'connect', label: 'Join', cta: true },
 ] as const
@@ -48,6 +48,7 @@ export const challenges = [
       'CRM tools are rare and often used only for donations',
       'High development and maintenance costs, unaffordable for 99% of mosques',
       'One-way communication; individuals need a separate app for every mosque',
+      'Not useful for individual religious needs',
     ],
   },
 ]
@@ -121,10 +122,16 @@ export const revenuePaid = [
   'Event management, ticketing & promotion',
 ]
 
-export const adSharing = [
-  { source: 'Company-sourced ads', split: '20% Mosque · 80% Company' },
-  { source: 'Mosque-sourced ads', split: '40% Mosque · 60% Company' },
-  { source: 'Freelancer-sourced ads', split: '10% Mosque · 60% Company · 30% Freelancer' },
+export const subscriptionOptions = [
+  {
+    title: 'Option 1 — Annual subscription',
+    detail: 'Mosque pays an all-inclusive annual subscription.',
+  },
+  {
+    title: 'Option 2 — In-app advertisement sharing',
+    detail:
+      'Mosque can opt for ad revenue sharing to reduce subscription cost and potentially create an additional income source for the mosque.',
+  },
 ]
 
 export const team = [

@@ -5,10 +5,13 @@ export function Challenge() {
     <section className="section" id="challenge">
       <div className="section-inner">
         <p className="section-kicker reveal">The challenge</p>
-        <h2 className="section-title">Why mosque engagement falls short today</h2>
+        <h2 className="section-title">
+          Why community engagement by mosque falls short in today’s digital world
+        </h2>
         <p className="section-lead reveal">
-          Community connection is fragmented. Existing tools are costly, one-way, and built only for
-          those already inside the mosque walls.
+          Community connection is fragmented. Existing tools are costly, built for one-way
+          communication, and built only for those already inside the mosque walls and not for wider
+          community engagement.
         </p>
 
         <div className="challenge-list">

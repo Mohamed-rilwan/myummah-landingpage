@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react'
 import emailjs from '@emailjs/browser'
-import { brand } from '../data/content'
 
 type FormState = {
   name: string
@@ -132,22 +131,6 @@ export function Connect() {
               good.
             </p>
             <div className="connect-meta">
-              <div>
-                <strong>
-                  <a
-                    href={brand.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {brand.company}
-                  </a>
-                </strong>
-              </div>
-              <div>{brand.owner}</div>
-              <div>
-                Email:{' '}
-                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-              </div>
               <div>
                 Prefer a quick note? Write us and we will follow up within a few days.
               </div>

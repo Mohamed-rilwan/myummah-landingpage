@@ -1,14 +1,17 @@
-import { adSharing, revenueFree, revenuePaid } from '../data/content'
+import { revenueFree, revenuePaid, subscriptionOptions } from '../data/content'
 
 export function Revenue() {
   return (
     <section className="section" id="revenue">
       <div className="section-inner">
-        <p className="section-kicker reveal">Revenue model</p>
-        <h2 className="section-title">Free for all users, subscription for mosques</h2>
+        <p className="section-kicker reveal">Subscription model</p>
+        <h2 className="section-title">
+          Free for all users, all-inclusive single subscription for mosques
+        </h2>
         <p className="section-lead reveal">
-          Personal worship tools stay free. Mosques unlock CRM, finance, and event modules through
-          subscription, with optional ad revenue sharing that can reduce fees.
+          Personal worship tools stay free. Mosques unlock CRM, finance, and event modules through an
+          all-inclusive single subscription, with optional ad revenue sharing that can reduce fees and
+          increase income to the mosque.
         </p>
 
         <div className="tier-wrap">
@@ -32,17 +35,12 @@ export function Revenue() {
           </div>
 
           <div className="soft-panel reveal">
-            <h3>In-app advertisement sharing</h3>
-            <p>
-              Model B lets mosques accept in-app ads. Ad revenue can reduce subscription to a
-              minimum, and may eventually cover it entirely while creating additional income for
-              the mosque.
-            </p>
-            <div className="share-rows">
-              {adSharing.map((row) => (
-                <div className="share-row" key={row.source}>
-                  <span>{row.source}</span>
-                  <span>{row.split}</span>
+            <h3>Subscription options</h3>
+            <div className="option-list">
+              {subscriptionOptions.map((option) => (
+                <div className="option-item" key={option.title}>
+                  <h4>{option.title}</h4>
+                  <p>{option.detail}</p>
                 </div>
               ))}
             </div>

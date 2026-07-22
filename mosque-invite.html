@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Ummah · Mosque registration invite</title>
+    <style>
+      :root {
+        --navy: #071b3a;
+        --gold: #d4af37;
+        --gold-soft: #edd078;
+        --ivory: #f5f3ee;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #111827;
+        color: var(--ivory);
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        display: grid;
+        place-items: center;
+        padding: 1.25rem;
+        gap: 1rem;
+      }
+
+      .actions {
+        width: min(420px, 100%);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        justify-content: center;
+      }
+
+      .actions a,
+      .actions button {
+        appearance: none;
+        border: 1px solid var(--gold);
+        background: transparent;
+        color: var(--gold-soft);
+        padding: 0.7rem 1rem;
+        font: inherit;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .actions a.primary,
+      .actions button.primary {
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .poster {
+        width: min(420px, 100%);
+        display: block;
+        border-radius: 0.75rem;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        background: var(--navy);
+      }
+
+      .poster img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: inherit;
+      }
+
+      .hint {
+        width: min(420px, 100%);
+        text-align: center;
+        font-size: 0.9rem;
+        color: rgba(245, 243, 238, 0.65);
+        line-height: 1.4;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+        }
+
+        .actions,
+        .hint {
+          display: none;
+        }
+
+        .poster {
+          width: 100%;
+          max-width: none;
+          border-radius: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="actions">
+      <a
+        class="primary"
+        href="./mosque-invite-poster.png"
+        download="myummah-mosque-invite-poster.png"
+      >
+        Download poster
+      </a>
+      <button type="button" id="shareBtn">Share</button>
+      <a href="https://myummah.co.uk/#connect" target="_blank" rel="noopener noreferrer">
+        Open register page
+      </a>
+    </div>
+
+    <figure class="poster" id="poster">
+      <img
+        src="./mosque-invite-poster.png"
+        alt="My Ummah mosque registration invite poster"
+      />
+    </figure>
+
+    <p class="hint">
+      Tip: download the poster, or screenshot it, and send it to mosque contacts on WhatsApp.
+    </p>
+
+    <script>
+      const shareBtn = document.getElementById('shareBtn')
+      const posterImageUrl = new URL('./mosque-invite-poster.png', window.location.href).href
+      const posterPageUrl = new URL('./mosque-invite.html', window.location.href).href
+      const registerUrl = 'https://myummah.co.uk/#connect'
+      const message =
+        'Assalamu Alaikum,\n\n' +
+        'We are inviting your mosque to join *My Ummah*, a simple platform that links your community with the mosque.\n\n' +
+        'Register your mosque here:\n' +
+        registerUrl +
+        '\n\n' +
+        'Invite poster (with QR):\n' +
+        posterPageUrl +
+        '\n\nTogether in Faith · United in Good\n' +
+        'Albain Group Inc'
+
+      shareBtn.addEventListener('click', async () => {
+        if (navigator.share) {
+          try {
+            let file
+            try {
+              const res = await fetch(posterImageUrl)
+              const blob = await res.blob()
+              file = new File([blob], 'myummah-mosque-invite-poster.png', {
+                type: blob.type || 'image/png',
+              })
+            } catch {
+              file = undefined
+            }
+
+            if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+              await navigator.share({
+                title: 'My Ummah · Register your mosque',
+                text: message,
+                files: [file],
+              })
+              return
+            }
+
+            await navigator.share({
+              title: 'My Ummah · Register your mosque',
+              text: message,
+              url: registerUrl,
+            })
+            return
+          } catch (err) {
+            if (err && err.name === 'AbortError') return
+          }
+        }
+
+        try {
+          await navigator.clipboard.writeText(message)
+          shareBtn.textContent = 'Message copied'
+          setTimeout(() => {
+            shareBtn.textContent = 'Share'
+          }, 2000)
+        } catch {
+          window.prompt('Copy this message:', message)
+        }
+      })
+    </script>
+  </body>
+</html>

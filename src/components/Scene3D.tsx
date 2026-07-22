@@ -6,6 +6,7 @@ import { assetUrl } from '../lib/assets'
 
 type Scene3DProps = {
   scrollProgress: number
+  theme: 'light' | 'dark'
 }
 
 function MosqueBackdrop({ scrollProgress }: { scrollProgress: number }) {
@@ -151,11 +152,12 @@ function CameraRig({ scrollProgress }: { scrollProgress: number }) {
   return null
 }
 
-function SceneContent({ scrollProgress }: { scrollProgress: number }) {
+function SceneContent({ scrollProgress, theme }: { scrollProgress: number; theme: 'light' | 'dark' }) {
+  const sceneBg = theme === 'dark' ? '#071b3a' : '#f7f6f2'
   return (
     <>
-      <color attach="background" args={['#f7f6f2']} />
-      <fog attach="fog" args={['#f7f6f2', 8, 22]} />
+      <color attach="background" args={[sceneBg]} />
+      <fog attach="fog" args={theme === 'dark' ? [sceneBg, 6, 18] : [sceneBg, 8, 22]} />
       <ambientLight intensity={0.55} />
       <directionalLight position={[4, 6, 5]} intensity={1.15} color="#fff4d6" />
       <directionalLight position={[-5, 2, 2]} intensity={0.35} color="#4a90d9" />
@@ -169,7 +171,7 @@ function SceneContent({ scrollProgress }: { scrollProgress: number }) {
   )
 }
 
-export function Scene3D({ scrollProgress }: Scene3DProps) {
+export function Scene3D({ scrollProgress, theme }: Scene3DProps) {
   return (
     <div className="canvas-root" aria-hidden>
       <Canvas
@@ -178,7 +180,7 @@ export function Scene3D({ scrollProgress }: Scene3DProps) {
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
       >
         <Suspense fallback={null}>
-          <SceneContent scrollProgress={scrollProgress} />
+          <SceneContent scrollProgress={scrollProgress} theme={theme} />
         </Suspense>
       </Canvas>
     </div>

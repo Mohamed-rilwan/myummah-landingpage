@@ -19,6 +19,19 @@ export default function App() {
   const [progress, setProgress] = useState(0)
   const [activeId, setActiveId] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'light'
+    return window.localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+  }, [])
 
   const onProgress = useCallback((p: number) => {
     setProgress(p)
@@ -51,10 +64,10 @@ export default function App() {
     <>
       <div className="progress-bar" style={{ transform: `scaleX(${progress})` }} />
       <Suspense fallback={null}>
-        <Scene3D scrollProgress={progress} />
+        <Scene3D scrollProgress={progress} theme={theme} />
       </Suspense>
       <div className="page-veil" />
-      <Nav activeId={activeId} scrolled={scrolled} />
+      <Nav activeId={activeId} scrolled={scrolled} theme={theme} onToggleTheme={toggleTheme} />
       <main className="content-layer">
         <Hero />
         <Verse index={0} />
